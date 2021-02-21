@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JSON Server</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
     <script type="module" src="./js/controllers/controller.js" defer></script>
-</head>
-<body>
-    <div id="pageInfo"></div>
-    <div id="prev" class="btn">Prev</div>
-    <div id="next" class="btn">Next</div><br><br>
+  </head>
+  <body>
+    <div class="container">
+      <div class="prev-next">
+            <!--<button id="prev" class="btn">Prev</button>
+            <button id="next" class="btn">Next</button>-->
+      </div><br /><br />
 
-    <div id="output"></div><br>
-    <h3>Comments:</h3>
-    <div id="comments"></div><br>
+      <div id="posts"></div>
+      <br />
+      <h3>Comments:</h3>
+      <div id="comments"></div>
+      <br />
 
-    <form id="myForm">
-        <input type="text" name="title" placeholder="enter title">
-        <input type="author" name="author" placeholder="enter author">
-        <input type="submit" value="submit">
-    </form><br>
+      <form id="addPostForm">
+        <input type="text" name="title" placeholder="enter title" />
+        <input type="author" name="author" placeholder="enter author" />
+        <input type="submit" value="submit" />
+      </form><br />
 
-    <input type="text" name="search"><button class="btn" id="search">Search</button><br><br>
-
-    <textarea id="comments-input"></textarea><button class="btn" id="addComment">Add comment</button>
-
-
-
-</body>
+      <div class="search-add">
+        <input type="text" name="search" />
+        <button class="btn" id="search">Search</button>
+        
+        <textarea id="comments-input"></textarea>
+        <button class="btn" id="addComment">Add comment</button>
+      </div>
+    </div>
+  </body>
 </html>

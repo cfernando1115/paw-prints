@@ -1,68 +1,63 @@
-import { questionModel } from '../models/questionModel.js';
-import * as questionsController from './questionsController.js';
-import questionView from '../views/questionsView.js';
-import commentsView from '../views/commentsView.js';
-import * as commentsController from './commentsController.js';
-import { commentModel, getCommentsByPostId } from '../models/commentModel.js';
+import * as postModel from "../models/postModel.js";
+import * as postsController from "./postsController.js";
+import postsView from "../views/postsView.js";
+import { commentModel, getCommentsByPostId } from "../models/commentModel.js";
+import * as commentsController from "./commentsController.js";
+import commentsView from "../views/commentsView.js";
+import pageView from "../views/pageView.js";
 
-(async function Controller() {
-    try {
-        let currentId = 1;
-        setUpEventListeners();
-        await questionsController.loadQuestions();
-        questionView.render(questionModel.questions[0]);
-        await commentsController.loadComments();
-        getCommentsByPostId(currentId);
-        commentsView.render(commentModel.commentsByPostId);
+async function controller() {
+  //populate models
+  await postsController.loadPosts();
+  await commentsController.loadComments();
 
-        function setUpEventListeners() {
-            document.querySelector('#next').addEventListener('click', next);
-            document.querySelector('#prev').addEventListener('click', prev);
-            document.querySelector('#myForm').addEventListener('submit', function (e) {
-                e.preventDefault();
-                const title = document.querySelector('#myForm input[name="title"]').value;
-                const author = document.querySelector('#myForm input[name="author"]').value;
-                const data = `title=${title}&author=${author}`;
-                questionsController.postQuestion(data);
-            })
-            document.querySelector('#search').addEventListener('click', async function () {
-                const search = document.querySelector('input[name="search"]').value;
-                const result = await questionsController.searchQuestion(search);
-                questionView.render(result[0]);
-            });
-            document.querySelector('#addComment').addEventListener('click', async function () {
-                const body = document.getElementById('comments-input').value;
-                console.log(body);
-                const postId = currentId;
-                const data = `postId=${postId}&body=${body}`;
-                await commentsController.postComment(data);
-                getCommentsByPostId(currentId);
-                commentsView.render(commentModel.commentsByPostId);
-            });
-        }
-        
-        function next() {
-            currentId++;
-            currentId = currentId > questionModel.questions.length ? 1 : currentId;
-            controlCurrent();
-        }
+  //render initial views
+  postModel.loadCurrentPost();
+  postsView.render(postModel.state.currentPost);
+  getCommentsByPostId(postModel.state.currentPost.id);
+  commentsView.render(commentModel.commentsByPostId);
+  pageView.render(postModel.state);
+}
 
-        function prev() {
-            currentId--;
-            currentId = currentId > 0 ? currentId : questionModel.questions.length;
-            controlCurrent();
-        }
+(function Init() {
+  try {
+    pageView.addHandlerPrevNext(controlCurrent);
+    postsView.addHandlerAddPost(postsController.addPost);
+    postsView.addHandlerSearch(controlSearch);
+    function setUpEventListeners() {
 
-        function controlCurrent() {
-            const question = questionModel.questions.find(q => q.id === currentId);
-            questionView.render(question);
-            getCommentsByPostId(currentId);
-            commentsView.render(commentModel.commentsByPostId);
-        }
-    } catch (error) {
-        console.log(error);
+      document
+        .querySelector("#addComment")
+        .addEventListener("click", async function () {
+          const body = document.getElementById("comments-input").value;
+          console.log(body);
+          const postId = currentId;
+          const data = `postId=${postId}&body=${body}&date=${new Date().toLocaleDateString(
+            "en-US"
+          )}`;
+          await commentsController.postComment(data);
+          getCommentsByPostId(currentId);
+          commentsView.render(commentModel.commentsByPostId);
+        });
+      
     }
+    controller();
+
+    function controlCurrent(postId) {
+      postModel.loadCurrentPost(postId);
+      postsView.render(postModel.state.currentPost);
+      getCommentsByPostId(postId);
+      commentsView.render(commentModel.commentsByPostId);
+      pageView.render(postModel.state);
+    }
+
+    //start here!!!
+
+    async function controlSearch(query) {
+      await postsController.searchPosts(query);
+      controlCurrent(postModel.state.searchResults[0].id);
+    }
+  } catch (error) {
+    console.log(error);
+  }
 })();
-
- 
-

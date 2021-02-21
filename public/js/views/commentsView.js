@@ -1,28 +1,17 @@
+import { View } from './view.js';
 
-class CommentView {
-    #output = document.getElementById('comments');
-    #data;
+class CommentsView extends View{
+  _output = document.getElementById("comments");
 
-    render(data) {
-        this.#data = data;
-        const markup = this.#generateMarkup();
-        this.#clear();
-        this.#output.innerHTML = markup;
-    }
-
-    #generateMarkup() {
-        let html = '';
-        this.#data.forEach(el => {
-            html += `
-        <p><b>${el.id}.</b> ${el.body}</p>
+  _generateMarkup() {
+    let html = "";
+    this._data.forEach((el) => {
+      html += `
+        <p><b>${el.date}: </b> ${el.body}</p>
         `;
-        })
-        return html;
-    }
-
-    #clear() {
-        this.#output.innerHTML = '';
-    }
+    });
+    return html;
+  }
 }
 
-export default new CommentView();
+export default new CommentsView();

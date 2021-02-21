@@ -19,23 +19,58 @@
       "title": "test",
       "author": "carmen",
       "id": 4
+    },
+    {
+      "title": "Another Test",
+      "author": "carmen",
+      "id": 5
+    },
+    {
+      "title": "blah",
+      "author": "blah",
+      "id": 6
+    },
+    {
+      "title": "test",
+      "author": "test",
+      "id": 7
+    },
+    {
+      "title": "test",
+      "author": "test",
+      "id": 8
     }
   ],
   "comments": [
     {
       "id": 1,
       "body": "some comment",
-      "postId": 1
+      "postId": 1,
+      "date": "5/10/1995"
     },
     {
       "postId": "1",
       "body": "some new comment",
-      "id": 2
+      "id": 2,
+      "date": "5/10/1995"
     },
     {
       "postId": "1",
       "body": "hello",
+      "date": "2/15/2021",
       "id": 3
+    },
+    {
+      "postId": "2",
+      "body": "hello",
+      "date": "2/15/2021",
+      "id": 4
+    },
+    {
+      "postId": "1",
+      "body": "here's a new comment",
+      "date": "2/20/2021",
+      "id": 5
     }
   ],
   "profile": {
