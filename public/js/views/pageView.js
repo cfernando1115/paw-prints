@@ -9,45 +9,50 @@ class PageView extends View{
             if (!btn) {
                 return;
             }
-            const postId = +btn.dataset.goto;
-            handler(postId);
+            const postIndex = +btn.dataset.goto;
+            handler(postIndex);
         })
     }
 
     _generateMarkup() {
-        const numPosts = this._data.posts.length;
-        const curPost = this._data.currentPost.id;
+        const numPosts = this._data.posts.length-1;
+        const curIndex = this._data.posts.findIndex(post => post === this._data.currentPost);
+        //const curPost = this._data.posts[curIndex].id;
         
         //post 1 of multiple posts
-        if (curPost === 1 && numPosts > 1) {
-            return this._generateNextBtn(curPost);
+        if (curIndex === 0 && numPosts >= 1) {
+            return this._generateBtnNext(curIndex);
         };
 
         //last post of multiple posts
-        if (curPost === numPosts && numPosts > 1) {
-            return this._generatePrevBtn(curPost);
+        if (curIndex === numPosts && numPosts > 1) {
+            return this._generateBtnPrev(curIndex);
         };
 
         //middle post
-        if (curPost < numPosts) {
-            let html= this._generatePrevBtn(curPost);
-            html+= this._generateNextBtn(curPost);
-
-            return html;
+        if (curIndex < numPosts) {
+            return this._generateBtnSet(curIndex);
         };
 
         return '';
     }
 
-    _generatePrevBtn(curPost) {
+    _generateBtnSet(curPost) {
         return `
-        <button id="prev" class="btn" data-goto="${curPost-1}">Prev</button>
+            <button id="next" class="btn prev" data-goto="${curPost-1}">Prev</button>
+            <button id="prev" class="btn next" data-goto="${curPost+1}">Next</button>
         `;
     }
 
-    _generateNextBtn(curPost) {
+    _generateBtnNext(curPost) {
         return `
-        <button id="prev" class="btn" data-goto="${curPost+1}">Next</button>
+            <button id="next" class="btn next" data-goto="${curPost+1}">Next</button>
+        `;
+    }
+
+    _generateBtnPrev(curPost) {
+        return `
+            <button id="prev" class="btn prev" data-goto="${curPost-1}">Prev</button>
         `;
     }
 }

@@ -5,23 +5,24 @@ class PostsView extends View{
 
   _generateMarkup() {
     return `
-        <h2>Title: ${this._data.title}</h2>
-        <h3>Author: ${this._data.author}</h3>
-        `;
+        <h2 class="post-title">Title: ${this._data.title}</h2>
+        <h3 class="post-body">Post: ${this._data.body}</h3>
+        <h4 class="post-id">Post Id: ${this._data.id}</h4>
+      `;
   }
 
-  addHandlerAddPost(handler) {
+  /*addHandlerAddPost(handler) {
     document.querySelector("#addPostForm").addEventListener("submit", function (e) {
       e.preventDefault();
       const title = document.querySelector('#addPostForm input[name="title"]').value;
-      const author = document.querySelector('#addPostForm input[name="author"]').value;
+      const body = document.querySelector('#addPostForm input[name="body"]').value;
       const data = {
         title: title,
-        author: author
+        body: body
       }
       handler(data);
     });
-  }
+  }*/
 
   addHandlerSearch(handler) {
     document.querySelector("#search").addEventListener("click", async function () {

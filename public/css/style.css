@@ -2,12 +2,33 @@
   box-sizing: border-box;
 }
 
+.profile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;;
+}
+
+.profile-pic img{
+  border-radius: 50%;
+  width: 250px;
+  height: auto;
+}
+
 .btn {
-  border: 1px solid black;
+  border: none;
+  padding:5px 0;
+  background-color: aliceblue;
+  box-shadow: 2px 2px 2px 2px rgba(128, 128, 128, 0.425);
   margin:3px;
   width: 100px;
   text-align: center;
   border-radius: 2px;
+  cursor:pointer;
+}
+
+.btn:focus{
+  outline:none;
 }
 
 form {
@@ -21,6 +42,7 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 1000px;
 }
 
 .search_add {
@@ -34,4 +56,19 @@ textarea {
 
 .prev-next {
   display: flex;
+  width:25%;
+  justify-content: flex-start;
+  height: 5%;
+}
+
+.next{
+  margin-left: auto;
+}
+
+.posts{
+  height: 20%;
+}
+
+.comments{
+  height:25%;
 }

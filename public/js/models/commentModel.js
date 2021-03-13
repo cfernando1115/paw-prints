@@ -3,7 +3,7 @@ export const commentModel = {
   commentsByPostId: [],
 };
 
-export const getCommentsByPostId = function (postId) {
+export const getCommentsByPostId = function (postId=1) {
   commentModel.commentsByPostId = commentModel.comments.filter(function(el) {
     if (parseInt(el.postId) === postId) {
       return el;

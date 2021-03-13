@@ -1,9 +1,8 @@
 export const state = {
   posts: [],
-  currentPost: {},
-  searchResults: []
+  currentPost: {}
 };
 
-export const loadCurrentPost=function(id = 1){
-  state.currentPost = state.posts.find(p => p.id == id);
+export const loadCurrentPost = function (index) {
+  state.currentPost = state.posts[index] ?? state.posts[0];
 }
