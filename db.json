@@ -3,7 +3,14 @@
     {
       "id": 1,
       "title": "The post title",
-      "body": "The post body"
+      "body": "The post body",
+      "likes": 3
+    },
+    {
+      "id": 2,
+      "title": "Another Post",
+      "body": "Here's another post",
+      "likes": 2
     }
   ],
   "comments": [
@@ -12,6 +19,36 @@
       "body": "Here is a comment on your post",
       "postId": 1,
       "date": "02/12/2021"
+    },
+    {
+      "postId": "1",
+      "body": "here is another comment",
+      "date": "3/13/2021",
+      "id": 2
+    },
+    {
+      "postId": "1",
+      "body": "And another",
+      "date": "3/13/2021",
+      "id": 3
+    },
+    {
+      "postId": "1",
+      "body": "here's another",
+      "date": "3/13/2021",
+      "id": 4
+    },
+    {
+      "postId": "1",
+      "body": "another",
+      "date": "3/13/2021",
+      "id": 5
+    },
+    {
+      "postId": "1",
+      "body": "",
+      "date": "3/13/2021",
+      "id": 6
     }
   ],
   "profile": {

@@ -5,8 +5,9 @@ class CommentsView extends View{
 
   addHandlerAddComment(handler) {
     document.querySelector("#addComment").addEventListener("click", async function () {
-      const body = document.getElementById("comments-input").value;
-      handler(body);
+      const body = document.getElementById("comments-input");
+      handler(body.value);
+      body.value = '';
     });
   }
 
@@ -14,7 +15,7 @@ class CommentsView extends View{
     let html = "";
     this._data.forEach((el) => {
       html += `
-        <p><b>${el.date}: </b> ${el.body}</p>
+        <p><b>${el.date}: </b><br> ${el.body}</p>
         `;
     });
     return html;

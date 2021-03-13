@@ -17,7 +17,7 @@ class PageView extends View{
     _generateMarkup() {
         const numPosts = this._data.posts.length-1;
         const curIndex = this._data.posts.findIndex(post => post === this._data.currentPost);
-        //const curPost = this._data.posts[curIndex].id;
+        console.log(curIndex);
         
         //post 1 of multiple posts
         if (curIndex === 0 && numPosts >= 1) {
@@ -25,7 +25,7 @@ class PageView extends View{
         };
 
         //last post of multiple posts
-        if (curIndex === numPosts && numPosts > 1) {
+        if (curIndex === numPosts && numPosts >= 1) {
             return this._generateBtnPrev(curIndex);
         };
 

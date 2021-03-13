@@ -5,9 +5,9 @@ class PostsView extends View{
 
   _generateMarkup() {
     return `
+        <div class="likes"><button class="icon-btn"><ion-icon class="thumb-icon" name="thumbs-up-outline"></ion-icon></button><span> ${this._data.likes}</span></div>
         <h2 class="post-title">Title: ${this._data.title}</h2>
         <h3 class="post-body">Post: ${this._data.body}</h3>
-        <h4 class="post-id">Post Id: ${this._data.id}</h4>
       `;
   }
 

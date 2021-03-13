@@ -1,6 +1,6 @@
 import * as postModel from "../models/postModel.js";
 import { commentModel, getCommentsByPostId } from "../models/commentModel.js";
-import { profileModel } from "../models/profileModel.js";
+import { profileModel } from '../models/profileModel.js';
 
 import * as postsController from "./postsController.js";
 import * as commentsController from "./commentsController.js";
