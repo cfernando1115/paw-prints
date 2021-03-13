@@ -4,7 +4,6 @@ class ProfileView extends View{
     _output = document.querySelector('.profile');
 
     _generateMarkup() {
-        console.log(this._data);
         return `
             <div class="profile-pic">
                 <img src="${this._data.picture.large}">

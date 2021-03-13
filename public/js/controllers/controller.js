@@ -14,22 +14,23 @@ import profileView from "../views/profileView.js";
 (async function Init() {
   try {
     pageView.addHandlerPrevNext(controlPage);
-    //postsView.addHandlerAddPost(controlAddPost);
     postsView.addHandlerSearch(controlSearch);
+    postsView.addHandlerClearSearch(controlReset);
     commentsView.addHandlerAddComment(controlAddComment);
     await postsController.loadPosts();
     await commentsController.loadComments();
     await loadProfile();
+    profileView.render(profileModel.profile);
 
     controlCurrent();
 
     function controlCurrent(index = null) {
-      profileView.render(profileModel.profile);
       postModel.loadCurrentPost(index);
       postsView.render(postModel.state.currentPost);
       getCommentsByPostId(postModel.state.currentPost.id);
       commentsView.render(commentModel.commentsByPostId);
       pageView.render(postModel.state);
+      postsView.addHandlerLikes(controlLikes);
     }
 
     function controlPage(postIndex) {
@@ -51,11 +52,19 @@ import profileView from "../views/profileView.js";
       commentsView.render(commentModel.commentsByPostId);
     }
 
-    async function controlAddPost(data) {
-      await postsController.addPost(data);
-      pageView.render(postModel.state);
+    async function controlLikes() {
+      const currentIndex = postModel.state.posts.indexOf(postModel.state.currentPost);
+      postModel.addLike(currentIndex);
+      await postsController.updatePost(postModel.state.posts[currentIndex]);
+      postModel.loadCurrentPost(currentIndex);
+      postsView.render(postModel.state.currentPost);
+      postsView.addHandlerLikes(controlLikes);
     }
 
+    async function controlReset() {
+      await postsController.loadPosts();
+      controlCurrent();
+    }
   } catch (error) {
     console.log(error);
   }

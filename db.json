@@ -1,57 +1,63 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "The post title",
-      "body": "The post body",
-      "likes": 3
+      "title": "Buddy is the cutest!",
+      "body": "Just thought I'd share a pic of the cutest pup ever.",
+      "likes": "3",
+      "img": "img/dog1.png",
+      "id": 1
     },
     {
-      "id": 2,
-      "title": "Another Post",
-      "body": "Here's another post",
-      "likes": 2
+      "title": "Sprinkles",
+      "body": "Sprinkles took her shots like a champ at the vet today.",
+      "likes": "3",
+      "img": "img/cat1.png",
+      "id": 2
+    },
+    {
+      "title": "Dog off leash",
+      "body": "Someone's dog bit me on my jog, today. Please leash your pets!",
+      "likes": "14",
+      "img": "img/raccoon1.png",
+      "id": 3
     }
   ],
   "comments": [
     {
       "id": 1,
-      "body": "Here is a comment on your post",
+      "body": "Great pic!",
       "postId": 1,
       "date": "02/12/2021"
     },
     {
       "postId": "1",
-      "body": "here is another comment",
+      "body": "Call me for a doggy playdate!",
       "date": "3/13/2021",
       "id": 2
     },
     {
-      "postId": "1",
-      "body": "And another",
-      "date": "3/13/2021",
+      "postId": "2",
+      "body": "Great job, Sprinkles!",
+      "date": "2/15/2021",
       "id": 3
     },
     {
-      "postId": "1",
-      "body": "here's another",
-      "date": "3/13/2021",
+      "postId": "2",
+      "body": "So well behaved!",
+      "date": "3/1/2021",
       "id": 4
     },
     {
-      "postId": "1",
-      "body": "another",
-      "date": "3/13/2021",
+      "postId": "3",
+      "body": "Ummm...not sure that's a dog.",
+      "date": "2/19/2021",
       "id": 5
     },
     {
-      "postId": "1",
-      "body": "",
+      "postId": "3",
+      "body": "Definitely not a dog.",
       "date": "3/13/2021",
       "id": 6
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

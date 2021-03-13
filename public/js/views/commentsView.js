@@ -15,7 +15,7 @@ class CommentsView extends View{
     let html = "";
     this._data.forEach((el) => {
       html += `
-        <p><b>${el.date}: </b><br> ${el.body}</p>
+        <p><b>${el.date}:</b><br> ${el.body}</p>
         `;
     });
     return html;

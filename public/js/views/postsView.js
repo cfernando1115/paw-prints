@@ -6,29 +6,30 @@ class PostsView extends View{
   _generateMarkup() {
     return `
         <div class="likes"><button class="icon-btn"><ion-icon class="thumb-icon" name="thumbs-up-outline"></ion-icon></button><span> ${this._data.likes}</span></div>
-        <h2 class="post-title">Title: ${this._data.title}</h2>
-        <h3 class="post-body">Post: ${this._data.body}</h3>
+        <h2 class="post-title">${this._data.title}</h2>
+        <p class="post-body">${this._data.body}</p>
+        <img src="${this._data.img}"></img>
       `;
   }
 
-  /*addHandlerAddPost(handler) {
-    document.querySelector("#addPostForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const title = document.querySelector('#addPostForm input[name="title"]').value;
-      const body = document.querySelector('#addPostForm input[name="body"]').value;
-      const data = {
-        title: title,
-        body: body
-      }
-      handler(data);
-    });
-  }*/
+  addHandlerLikes(handler) {
+    document.querySelector('.likes button').addEventListener('click', function () {
+      handler();
+    })
+  }
 
   addHandlerSearch(handler) {
-    document.querySelector("#search").addEventListener("click", async function () {
+    document.querySelector('#search').addEventListener('click', function () {
       const query = document.querySelector('input[name="search"]').value;
       handler(query);
     });
+  }
+
+  addHandlerClearSearch(handler) {
+    document.querySelector('#clear-search').addEventListener('click', function () {
+      document.querySelector('input[name="search"]').value = '';
+      handler();
+    })
   }
 }
 

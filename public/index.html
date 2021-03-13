@@ -3,9 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Social media profile page">
+    <meta name="description" content="A profile page for pet lovers">
     <meta name="author" content="Carmen Fernando">
-    <title>Profile Page</title>
+    <title>Paw Prints</title>
+    	
+    <link rel='icon' href='img/favicon.ico' type='image/x-icon'/ >
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" />
@@ -14,20 +16,25 @@
     <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
   </head>
   <body>
+    <header>
+      <ion-icon class="paw-icon" name="paw-outline"></ion-icon>
+      <div class="headings">
+        <h1>Paw Prints</h1>
+        <h3>Yet another place for pet pictures!</h3>
+      </div>
+    </header>
     <div class="container">
       <div class="profile"></div>
       <div class="post-comment">
         <div class="post-container">
-          <div class="prev-next">
-            <!--<button id="prev" class="btn">Prev</button>
-            <button id="next" class="btn">Next</button>-->
-          </div><br />
-
-          <div class="posts" id="posts"></div>
-          <br />
+          <div class="prev-next"></div><br />
+          <div class="posts" id="posts"></div><br />
           <div class="inputs">
             <input type="text" name="search" />
-            <button class="btn" id="search">Search</button>
+            <div>
+              <button class="btn" id="search">Search</button>
+              <button class="btn" id="clear-search">Clear</button>
+            </div>
           </div>
         </div>
         <div class="comment-container">
@@ -35,21 +42,10 @@
           <div class="comments" id="comments"></div>
           <br />
            <div class="inputs">
-            <textarea id="comments-input"></textarea>
+            <textarea name="comment-input" id="comments-input"></textarea>
             <button class="btn" id="addComment">Add comment</button>
            </div>       
         </div>
-      </div>
-
-      <!--<form id="addPostForm">
-        <input type="text" name="title" placeholder="enter title" />
-        <input type="text" name="body" placeholder="enter body" />
-        <input type="submit" value="submit" />
-      </form><br />-->
-
-      <div class="search-add">
-
-
       </div>
     </div>
   </body>

@@ -5,25 +5,51 @@
 body{
   font-family: 'Padauk', sans-serif;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 0;
   padding: 0;
   justify-content: center;
-  justify-self: center;
   background-color: whitesmoke;
   color: rgb(94, 92, 92);
 }
 
+header{
+  margin-top:30px;
+  width: 40%;
+  background-color: rgb(69, 221, 221);
+  color: rgb(94, 92, 92);
+  height: 100px;
+  display: flex;
+  justify-content: lefts;
+  align-items: center;
+  padding: 20px;
+}
+
+.paw-icon{
+  font-size: 300%;
+  margin: 0 20px;
+}
+
+.headings h1,
+.headings h3{
+  margin: -10px;
+}
+
+.headings h3{
+  font-weight: 400;
+}
+
 .container {
-  margin: 20px;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 40%;
-  border: 3px solid rgb(69, 221, 221);
-  border-radius: 10px;
+  border: 5px solid rgb(236, 199, 130);
+  border-radius: 0 0 10px 10px;
   overflow: hidden;
   background-color: rgb(231, 243, 243);
-  box-shadow: 3px 3px 8px 3px rgb(69, 221, 221);
 }
 
 /***Profile Container***/
@@ -72,13 +98,13 @@ body{
 .comment-container{
   display: flex;
   flex-direction: column;
-  height: 400px;
+  height: 600px;
   margin: 40px;
   width: 45%;
 }
 
 .comment-container h3{
-  margin-top: 0;
+  margin-top: 5px;
 }
 
 .posts,
@@ -86,6 +112,12 @@ body{
   height: 75%;
   overflow-y: auto;
   padding-right: 10px;
+}
+
+.posts img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .inputs{
@@ -99,13 +131,13 @@ body{
 .btn {
   border: none;
   padding:5px 0;
-  background-color: whitesmoke;
-  box-shadow: 2px 2px 2px 1px rgb(69, 221, 221);
+  background-color: transparent;
   margin:3px;
   width: 100px;
   text-align: center;
   border-radius: 2px;
   cursor:pointer;
+  color: rgb(19, 179, 179);
 }
 
 .btn:focus{
@@ -115,11 +147,15 @@ body{
 .prev-next {
   display: flex;
   justify-content: flex-start;
-  height: 8%;
+  height: 6%;
 }
 
 .next{
   margin-left: auto;
+}
+
+.arrow-icon{
+  font-size: 225%;
 }
 
 .icon-btn{
@@ -154,7 +190,8 @@ input {
 }
 
 @media only screen and (max-width: 600px){
-  .container{
+  .container,
+  header{
     width:90%;
   }
 

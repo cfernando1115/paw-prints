@@ -17,7 +17,6 @@ class PageView extends View{
     _generateMarkup() {
         const numPosts = this._data.posts.length-1;
         const curIndex = this._data.posts.findIndex(post => post === this._data.currentPost);
-        console.log(curIndex);
         
         //post 1 of multiple posts
         if (curIndex === 0 && numPosts >= 1) {
@@ -39,20 +38,20 @@ class PageView extends View{
 
     _generateBtnSet(curPost) {
         return `
-            <button id="next" class="btn prev" data-goto="${curPost-1}">Prev</button>
-            <button id="prev" class="btn next" data-goto="${curPost+1}">Next</button>
+            <button id="next" class="btn prev" data-goto="${curPost-1}"><ion-icon class="arrow-icon" name="arrow-back-circle-outline"></ion-icon></button>
+            <button id="prev" class="btn next" data-goto="${curPost+1}"><ion-icon class="arrow-icon" name="arrow-forward-circle-outline"></ion-icon></button>
         `;
     }
 
     _generateBtnNext(curPost) {
         return `
-            <button id="next" class="btn next" data-goto="${curPost+1}">Next</button>
+            <button id="next" class="btn next" data-goto="${curPost+1}"><ion-icon class="arrow-icon" name="arrow-forward-circle-outline"></ion-icon></button>
         `;
     }
 
     _generateBtnPrev(curPost) {
         return `
-            <button id="prev" class="btn prev" data-goto="${curPost-1}">Prev</button>
+            <button id="prev" class="btn prev" data-goto="${curPost-1}"><ion-icon class="arrow-icon" name="arrow-back-circle-outline"></ion-icon></button>
         `;
     }
 }

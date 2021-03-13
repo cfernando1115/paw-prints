@@ -22,18 +22,18 @@ export const loadPosts = async function () {
   }
 };
 
-export const addPost = async function (data) {
+export const updatePost = async function (data) {
   try {
     return new Promise(
       (resolve) => {
-        const postData = `title=${data.title}&body=${data.body}`;
+        const putData = `title=${data.title}&body=${data.body}&likes=${data.likes}&img=${data.img}`;
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://localhost:3000/posts", true);
+        xhr.open("PUT", `http://localhost:3000/posts/${data.id}`, true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhr.send(postData);
+        xhr.send(putData);
         xhr.onreadystatechange = function () {
-          if (xhr.readyState === 4 && xhr.status === 201) {
-            resolve(state.posts.push(JSON.parse(xhr.response)));
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            resolve();
           }
         };
       },
@@ -67,3 +67,4 @@ export const searchPosts = async function (search) {
     throw error;
   }
 };
+
